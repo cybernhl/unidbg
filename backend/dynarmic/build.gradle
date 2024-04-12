@@ -1,0 +1,19 @@
+plugins {
+    id 'com.github.zhkl0228.java-conventions'
+}
+apply plugin: 'maven-publish'
+description = 'unidbg-dynarmic'
+
+java {
+    withJavadocJar()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Javadoc).all { enabled = false }
+
+dependencies {
+    api project(':unidbg-api')
+}

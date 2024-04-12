@@ -1,0 +1,27 @@
+plugins {
+    id 'com.github.zhkl0228.java-conventions'
+}
+apply plugin: 'maven-publish'                    // Maven library name for the artifact
+description = 'unidbg-ios'
+
+java {
+    withJavadocJar()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Javadoc).all { enabled = false }
+
+dependencies {
+    api project(':unidbg-api')
+    api libs.io.kaitai.kaitai.struct.runtime
+    api libs.com.googlecode.plist.dd.plist
+    testImplementation project(':unidbg-dynarmic')
+    testImplementation project(':unidbg-hypervisor')
+    testImplementation project(':unidbg-kvm')
+    testImplementation project(':unidbg-unicorn2')
+}
+
+

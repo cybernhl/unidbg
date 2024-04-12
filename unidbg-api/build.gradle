@@ -1,0 +1,27 @@
+plugins {
+    id 'com.github.zhkl0228.java-conventions'
+}
+apply plugin: 'maven-publish'
+description = 'unidbg-api'
+
+java {
+    withJavadocJar()
+}
+
+tasks.withType(Javadoc).all { enabled = false }
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    api libs.com.github.zhkl0228.unicorn
+    api libs.com.github.zhkl0228.capstone
+    api libs.com.github.zhkl0228.keystone
+    api libs.commons.codec.commons.codec
+    api libs.org.apache.commons.commons.collections4
+    api libs.commons.io.commons.io
+    api libs.commons.logging.commons.logging
+    api libs.com.alibaba.fastjson
+    api libs.com.github.zhkl0228.demumble
+}
